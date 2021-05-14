@@ -9,19 +9,19 @@ public class Jogo extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 
-	// variaveis que vai guarda as texturas
+	// Variavel que irá guardar as texturas
 	private Texture[] passaros;
 	private Texture fundo;
 
-	private Texture[] canoAlto;//arrey de canos de cima
-	private Texture[] canoBaixo;//arrey de canos de baixo
+	private Texture[] canoAlto;// Arrey dos canos de cima
+	private Texture[] canoBaixo;// Arrey dos canos de baixo
 
 
-	// variaveis que vão guardar a altura e a largura do dispositivo
+	// Variaveis que vão guardar a altura e a largura
 	private float larguradispositivo;
 	private float alturadispositivo;
 
-	// variaveis que vão guardar  a movimentção sendo ela no eixo x ou y
+	// Variaveis que vão guardar a movimentação no eixo Y e X
 	private int movimentaX = 0;
 	private int movimentaY = 0;
 
@@ -37,7 +37,7 @@ public class Jogo extends ApplicationAdapter {
 	public void create() {
 		batch = new SpriteBatch();
 
-		fundo = new Texture("fundo.png");//pegando a textura para criar
+		fundo = new Texture("fundo.png");// Criando textura
 		passaros = new Texture[3];
 		passaros[0] = new Texture("passaro1.png");
 		passaros[1] = new Texture("passaro2.png");
@@ -52,11 +52,11 @@ public class Jogo extends ApplicationAdapter {
 		canoBaixo[1] = new Texture("cano_baixo_maior.png");
 
 
-		alturadispositivo = Gdx.graphics.getHeight();// declarando que altura e e a mesma do dispositivo
-		larguradispositivo = Gdx.graphics.getWidth();// declarando que largura e e a mesma do dispositivo
+		alturadispositivo = Gdx.graphics.getHeight();// Declara a altura é igual a do dispositivo
+		larguradispositivo = Gdx.graphics.getWidth();// Declara que a largura é igual a do dispositivo
 		posicaoInicialVerticalPassaro = alturadispositivo / 2;
-		alturaEnd = alturadispositivo - posicaoInicialVerticalPassaro / 2;// para achar altura do cano de cima
-		endposicaotela = (larguradispositivo / 2) * 2;// para achar a estremidade direita da tela
+		alturaEnd = alturadispositivo - posicaoInicialVerticalPassaro / 2;// Encontra a altura do cano superior
+		endposicaotela = (larguradispositivo / 2) * 2;// Encontra o lado direito da tela
 
 
 	}
@@ -66,11 +66,11 @@ public class Jogo extends ApplicationAdapter {
 		batch.begin();
 
 
-		if (variacao > 3) // variação para animação do passaro
+		if (variacao > 3) // Variante da animação do pássaro
 		{
 			variacao = 0;
 		}
-		boolean toqueTela = Gdx.input.justTouched();// bool pra verificar toque
+		boolean toqueTela = Gdx.input.justTouched();// bool para verificar o click
 		if (Gdx.input.justTouched()) {
 			gravidade = -25;
 
@@ -79,16 +79,16 @@ public class Jogo extends ApplicationAdapter {
 			posicaoInicialVerticalPassaro = posicaoInicialVerticalPassaro - gravidade;
 		}
 
-		batch.draw(fundo, 0, 0, larguradispositivo, alturadispositivo);// rederizando o fundo do game na cena
+		batch.draw(fundo, 0, 0, larguradispositivo, alturadispositivo);// Reendeniza o fundo do jogo
 
 		canos();
 
 
-		batch.draw(passaros[(int) variacao], 50, posicaoInicialVerticalPassaro);// rederizando o passaro na cena
+		batch.draw(passaros[(int) variacao], 50, posicaoInicialVerticalPassaro);// rederizan o passaro na cena
 		variacao += Gdx.graphics.getDeltaTime() * 10;
 
 		gravidade++;
-		movimentaY++;// fazendo se mover para frente na cena quando inicia a aplicação
+		movimentaY++;// fazendo se mover para frente quando inicia a aplicação
 		movimentaX++;// fazendo se mover para cima na cena quando inicia a aplicação
 
 		batch.end();
@@ -101,9 +101,9 @@ public class Jogo extends ApplicationAdapter {
 	}
 
 	void canos() {
-
-		batch.draw(canoAlto[0], endposicaotela - movimentaX, alturaEnd - 100, 100, 900);// desenhando os canos na tela tela com movimentação
-		batch.draw(canoBaixo[0], endposicaotela - movimentaX, 0, 100, 900);// desenhando os canos na tela com movimentação
+//Mostra os canos na tela com movimento
+		batch.draw(canoAlto[0], endposicaotela - movimentaX, alturaEnd - 100, 100, 900);
+		batch.draw(canoBaixo[0], endposicaotela - movimentaX, 0, 100, 900);
 
 
 	}
