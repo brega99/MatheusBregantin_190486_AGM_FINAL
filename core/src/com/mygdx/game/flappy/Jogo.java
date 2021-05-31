@@ -147,7 +147,7 @@ public class Jogo extends ApplicationAdapter {
 		boolean bateuCanoCima = Intersector.overlaps(circuloPassaro, retaguloCanoCima);// Verificação da colisão entre o passaro (player) e o cano
 		boolean bateuCanoBaixo = Intersector.overlaps(circuloPassaro, retanguloBaixo);// Verificação da colisão entre o passaro (player) e o cano
 		if (bateuCanoBaixo || bateuCanoCima) {
-			Gdx.app.log("Log", "colideu");
+			Gdx.app.log("Log", "Colidiu");
 
 			if (estadojogo == 1) {
 				somColisao.play();
@@ -222,7 +222,7 @@ public class Jogo extends ApplicationAdapter {
 	}
 
 	private void desenharTexturas() {
-		batch.begin();// coemeçando
+		batch.begin();// Começo
 
 		batch.draw(fundo, 0, 0, larguradispositivo, alturadispositivo);// Render do fundo na cena
 		batch.draw(passaros[(int) variacao], 50, posicaoInicialVerticalPassaro);// Render do passaro em cena (player)
